@@ -44,10 +44,11 @@ class Window(Frame):
         file = Menu(menu)
 
         # adds a command to the menu option, calling it exit, and the
-        # command it runs on event is client_exit
-        file.add_command(label="Exit", command=self.client_exit)
+        
 
         file.add_command(label='Open CSV', command=self.get_csv)
+        # command it runs on event is client_exit
+        file.add_command(label="Exit", command=self.client_exit)
 
         
 
@@ -69,29 +70,41 @@ class Window(Frame):
         exit()
 
 
-    # def update_lbl_csv_path(self, strText):
-    #     lbl_csv_path = strText
-    #     self.lbl_csv_path.configure(text=strText)
+    def update_lbl_csv_path(self, strText):
+        lbl_csv_path = strText
+        self.lbl_csv_path.configure(text=strText)
 
-    #     # self update (?)
-    #     self.after(1000, self.update_lbl_csv_path)
+        # self update (?)
+        self.after(1000, self.update_lbl_csv_path)
 
     # self made.
     def get_csv(self):
 
         root.filename =  filedialog.askopenfilename(initialdir = './',title = "Select file",filetypes = (('text files','*.txt *.csv'),('all files','*.*')))
         
-        strFileName = str(root.filename)
+        self.update_lbl_csv_path(strText=root.filename)
 
-        test_methodcall(self, msg=strFileName)
+        # strFileName = str(root.filename)
+
+        # test_methodcall(self, strFileName)
 
         # print (root.filename)
 
         # Update the label
         # update_lbl_csv_path(self, strText = strFileName)
     
+def update_lbl_csv_path(self, new_label_str):
+
+    # lbl_csv_path = strText
+    self.lbl_csv_path.configure(text=new_label_str)
+
+    # self update (?)
+    # self.after(1000, self.update_lbl_csv_path)
+
 def test_methodcall(self, msg='test'):
+    self.update_lbl_csv_path(strText=str(msg))
     print('message: ' + msg)
+
 
           
 
