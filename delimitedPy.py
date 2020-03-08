@@ -79,7 +79,7 @@ class Window(Frame):
     # self made.
     def get_csv(self):
 
-        root.filename =  filedialog.askopenfilename(initialdir = './',title = "Select file",filetypes = (('text files','*.txt'),('all files','*.*')))
+        root.filename =  filedialog.askopenfilename(initialdir = './',title = "Select file",filetypes = (('text files','*.txt *.csv'),('all files','*.*')))
         
         strFileName = str(root.filename)
 
