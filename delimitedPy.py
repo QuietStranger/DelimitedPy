@@ -20,18 +20,20 @@ class Window(Frame):
         #with that, we want to then run init_window, which doesn't yet exist
         self.init_window()
 
+
+        
+
     #Creation of init_window
     def init_window(self):
 
         # changing the title of our master widget      
         self.master.title("GUI")
 
-        # allowing the widget to take the full space of the root window
-        self.pack(fill=BOTH, expand=1)
-
-
         self.lbl_csv_path = Label(self, text='Please choose an action.')
         self.lbl_csv_path.place(x=0,y=0)
+
+        # allowing the widget to take the full space of the root window
+        self.pack(fill=BOTH, expand=1)
 
 
         # creating a menu instance
@@ -67,22 +69,30 @@ class Window(Frame):
         exit()
 
 
-    def update_lbl_csv_path(self, strText):
-        lbl_csv_path = strText
-        self.lbl_csv_path.configure(text=strText)
+    # def update_lbl_csv_path(self, strText):
+    #     lbl_csv_path = strText
+    #     self.lbl_csv_path.configure(text=strText)
 
-        # self update (?)
-        self.after(1000, self.update_lbl_csv_path)
+    #     # self update (?)
+    #     self.after(1000, self.update_lbl_csv_path)
 
     # self made.
     def get_csv(self):
-        print('testing "get_csv"')
-        root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt,*.csv"),("all files","*.*")))
+
+        root.filename =  filedialog.askopenfilename(initialdir = './',title = "Select file",filetypes = (('text files','*.txt'),('all files','*.*')))
         
+        strFileName = str(root.filename)
+
+        test_methodcall(self, msg=strFileName)
+
         # print (root.filename)
 
         # Update the label
-        update_lbl_csv_path(self, strText = str(root.filename))
+        # update_lbl_csv_path(self, strText = strFileName)
+    
+def test_methodcall(self, msg='test'):
+    print('message: ' + msg)
+
           
 
         
