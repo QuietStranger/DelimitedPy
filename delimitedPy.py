@@ -2,6 +2,7 @@
 from tkinter import filedialog
 from tkinter import *
 
+# Custom set of methods used for creating, this is mainly to control what is going on behind the scenes
 import Custom_Methods
 
 
@@ -103,6 +104,13 @@ class Window(Frame):
         # Create new input box to allow for user to input output file name
 
 
+        # @ToDo - Create a button to click after passing validation, to then change below to become a button to copy.
+        # Method to create duplicate as a test
+
+        # filenameEdits = str(root.filename)
+        Custom_Methods.duplicate_csv_file(source_csv = root.filename)
+
+
           
 
         
@@ -124,6 +132,10 @@ app = Window(root)
 
 # Last line to add last minute things to run before the Tkinter application starts up.
 # print('A test message perhaps? This will be run right before the Tkinter application launches.')
+
+# Custom_Methods.duplicate_csv_file()
+
+
 
 
 
