@@ -2,6 +2,8 @@
 from tkinter import filedialog
 from tkinter import *
 
+import Custom_Methods
+
 
 
 # Here, we are creating our class, Window, and inheriting from the Frame
@@ -95,6 +97,11 @@ class Window(Frame):
         # Updates label with path of selected file.
         self.update_lbl_csv_path(new_label_text=root.filename)
 
+        # @VALIDATION
+        # @ToDo - Handle user not selecting a file.
+        
+        # Create new input box to allow for user to input output file name
+
 
           
 
@@ -103,21 +110,26 @@ class Window(Frame):
 # you can later have windows within windows.
 root = Tk()
 
+# Initial size of the Tkinter application window dimentions.
 root.geometry("400x300")
 
 
-
-
-#creation of an instance
+# Creation of an instance
 app = Window(root)
-
-
 
 # Update the label a period of time
 # root.after(1000, app.update_lbl_csv_path)
 
 
 
+# Last line to add last minute things to run before the Tkinter application starts up.
+# print('A test message perhaps? This will be run right before the Tkinter application launches.')
 
-#mainloop 
+
+
+#mainloop
+# Everthing that happens before this look will be contained within the Tkinter application.
+# Everything after this will run once the Tkinter application is closed by close() or user clicks to close the window.
 root.mainloop()
+
+# Application is only Tkinter UI based and so probably not going to have code after this line unless expanded uppon later.
