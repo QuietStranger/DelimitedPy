@@ -1,59 +1,35 @@
-import traitlets
-from ipywidgets import widgets
-from IPython.display import display
-from tkinter import Tk, filedialog
+from tkinter import *
 
-class SelectFilesButton(widgets.Button):
-    """A file widget that leverages tkinter.filedialog."""
-    
-    def __init__(self):
-        super(SelectFilesButton, self).__init__()
-        # Add the selected_files trait
-        self.add_traits(files=traitlets.traitlets.List())
-        # Create the button.
-        self.description = "Select Files"
-        self.icon = "square-o"
-        self.style.button_color = "orange"
-        # Set on click behavior.
-        self.on_click(self.select_files)
-    
-    @staticmethod
-    def select_files(b):
-        """Generate instance of tkinter.filedialog
-        
-        Parameters
-        ----------
-        b : obj:
-            An instance of ipwidgets.widgets.Button
-        """
-        with out:
-            try:
-                # Create Tk root
-                root = Tk()
-                # Hide the main window
-                root.withdraw()
-                # Raise the root to the top of all windows.
-                root.call('wm', 'attributes', '.', '-topmost', True)
-                # List of selected files will be set to b.value
-                b.files = filedialog.askopenfilename(multiple=True)
-                
-                b.description = "Files Selected"
-                b.icon = "check-square-o"
-                b.style.button_color = "lightgreen"
-            except:
-                pass
-            
-out = widgets.Output()
-raw = SelectFilesButton()
-widgets.VBox([raw, out])
+class Window(Frame):
 
-print(type(raw))
+    def __init__(self, master=None):
+        Frame.__init__(self, master)               
+        self.master = master
+        self.init_window()
 
-print(raw)
+    #Creation of init_window
+    def init_window(self):
 
-print(raw.files)
+        # changing the title of our master widget      
+        self.master.title("GUI")
 
-for f in raw.files:
-    print(f)
+        # allowing the widget to take the full space of the root window
+        self.pack(fill=BOTH, expand=1)
 
+        # creating a button instance
+        quitButton = Button(self, text="Quit")
+
+        # placing the button on my window
+        quitButton.place(x=0, y=0)
+
+
+root = Tk()
+
+
+#size of the window
+root.geometry("400x300")
+
+app = Window(root)
+
+root.mainloop()
 
