@@ -70,40 +70,30 @@ class Window(Frame):
         exit()
 
 
-    def update_lbl_csv_path(self, strText):
-        lbl_csv_path = strText
-        self.lbl_csv_path.configure(text=strText)
+    def update_lbl_csv_path(self, new_label_text):
+        # @ToDo - Error Checking:
+        # Make sure text is able to be displayed.
+        # If text is the same, do not update.
 
-        # self update (?)
-        self.after(1000, self.update_lbl_csv_path)
+        # @Options - Add:
+        # .after to update self after period of time
+        #   self.after(1000, self.update_lbl_csv_path)
+
+        new_text = new_label_text
+        self.lbl_csv_path.configure(text = new_text)
 
     # self made.
     def get_csv(self):
+        # @ToDo - Error Checking:
+        # Handle user not selecting a file.
+        # Handle if the file is currently open by something else.
 
+        # @INPUT
+        # Dialog to ask the user for a file
         root.filename =  filedialog.askopenfilename(initialdir = './',title = "Select file",filetypes = (('text files','*.txt *.csv'),('all files','*.*')))
         
-        self.update_lbl_csv_path(strText=root.filename)
-
-        # strFileName = str(root.filename)
-
-        # test_methodcall(self, strFileName)
-
-        # print (root.filename)
-
-        # Update the label
-        # update_lbl_csv_path(self, strText = strFileName)
-    
-def update_lbl_csv_path(self, new_label_str):
-
-    # lbl_csv_path = strText
-    self.lbl_csv_path.configure(text=new_label_str)
-
-    # self update (?)
-    # self.after(1000, self.update_lbl_csv_path)
-
-def test_methodcall(self, msg='test'):
-    self.update_lbl_csv_path(strText=str(msg))
-    print('message: ' + msg)
+        # Updates label with path of selected file.
+        self.update_lbl_csv_path(new_label_text=root.filename)
 
 
           
