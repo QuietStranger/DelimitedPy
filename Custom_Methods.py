@@ -2,14 +2,16 @@ import datetime
 import csv
 from csv import reader, writer
 
-def duplicate_csv_file(source_csv='default value', output_csv='default value'):
+# import os.path
+from pathlib import Path
+
+def duplicate_csv_file(source_csv='input.csv', output_csv='temp.tmp'):
     # @DEBUG
-    # print('Calling: Custom_Methods.duplicate_csv_file()')
+    print('Running: Custom_Methods.duplicate_csv_file() ...')
 
-    source_csv = ''
-    source_csvPath = ''
+    source_csv = Path(source_csv)
 
-    output_csv = 'temp.tmp'
+    source_csvPath = Path(output_csv)
 
 
     with open(source_csv) as input_file, open(output_csv, 'w', newline='') as output_file:
@@ -21,6 +23,8 @@ def duplicate_csv_file(source_csv='default value', output_csv='default value'):
 
         for row in reader:
             writer.writerow(row)
+    
+    print('Ran: Custom_Methods.duplicate_csv_file().')
 
 # @DEBUG
 # duplicate_csv_file()
