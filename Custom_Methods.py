@@ -21,10 +21,41 @@ def duplicate_csv_file(source_csv='input.csv', output_csv='temp.tmp'):
         # .writerow If you want to insert a row before copying.
         writer.writerow(['name', 'size', 'modified'])
 
+        # Actual copying line by line.
         for row in reader:
             writer.writerow(row)
     
     print('Ran: Custom_Methods.duplicate_csv_file().')
 
+import unicodedata
+
 # @DEBUG
 # duplicate_csv_file()
+
+def check_utf8():
+    # @DEBUG
+    print('Running: Custom_Methods.check_utf8() ...')
+
+    singleCharacter = 'ê'
+    print(singleCharacter.encode())
+
+
+    singleCharacter = 'ê'
+    print('first string character: ' + singleCharacter)
+    print('length of first string= ' , len(singleCharacter))
+
+    multipleChars = '\N{LATIN SMALL LETTER E}\N{COMBINING CIRCUMFLEX ACCENT}'
+    print('second string character: ' + multipleChars)
+    print('length of second string= ' , len(multipleChars))
+    
+    # print(singleCharacter + multipleChars)
+
+    # testStr = singleCharacter
+    # testStr = testStr.encode(encoding='UTF-8', errors='strict')
+
+    print('singleCharacter: ' + str(singleCharacter.encode(encoding='UTF-8', errors='strict')))
+    print('multipleChars: ' + str(multipleChars.encode(encoding='UTF-8', errors='strict')))
+    # print('singleCharacter' + str(singleCharacter.encode(encoding='UTF-8', errors='strict')))
+
+    print(multipleChars.encode(encoding='us-ascii', errors='strict'))
+check_utf8()
